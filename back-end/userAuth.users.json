@@ -1,0 +1,92 @@
+[{
+  "_id": {
+    "$oid": "67ea9d8c0f8eb5b3bfd0e800"
+  },
+  "username": "admin",
+  "email": "admin@gmail.com",
+  "password": "$2b$10$oPmU8rRnURjrF3fc4yVxzulbal/wLqDRf3CGh3zeqR/ziLWBXxZsu",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2025-03-31T13:50:04.438Z"
+  },
+  "__v": 0,
+  "lastActive": {
+    "$date": "2025-04-22T11:20:54.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67eba4eafd447e6a07561dc9"
+  },
+  "username": "shine",
+  "email": "shine@gmail.com",
+  "password": "$2b$10$uwdGrwJR7/Jac1qHVjOi7uZf9T5LDmJuvoOyBrCTpdiohqJyduaXe",
+  "role": "user",
+  "createdBy": {
+    "$oid": "67ea9d8c0f8eb5b3bfd0e800"
+  },
+  "createdAt": {
+    "$date": "2025-04-01T08:33:46.707Z"
+  },
+  "lastActive": {
+    "$date": "2025-04-22T12:23:05.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ef9281de6769ed3508712a"
+  },
+  "username": "zulaa",
+  "email": "zulaa@gmail.com",
+  "password": "$2b$10$jR.VBmSq2wPHAEeH0Me8zuW1nx5ZWh93JaRDnj12LqKfFkI6zibJq",
+  "role": "user",
+  "createdBy": {
+    "$oid": "67ea9d8c0f8eb5b3bfd0e800"
+  },
+  "createdAt": {
+    "$date": "2025-04-04T08:04:17.841Z"
+  },
+  "lastActive": {
+    "$date": "2025-04-06T08:08:58.945Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67efa61ade6769ed35087142"
+  },
+  "username": "shinee12",
+  "email": "shinee@gmail.com",
+  "password": "$2b$10$ryVlv5BRJB.bhU/UGGVzquTlPvwGGrFvrk2Dty4GmkIVKridYQSa.",
+  "role": "user",
+  "createdBy": {
+    "$oid": "67ea9d8c0f8eb5b3bfd0e800"
+  },
+  "createdAt": {
+    "$date": "2025-04-04T09:27:54.676Z"
+  },
+  "lastActive": {
+    "$date": "2025-04-04T09:29:35.392Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f670070426b57c83cba367"
+  },
+  "username": "admin1",
+  "email": "admin1@gmail.com",
+  "password": "$2b$10$NbnoZU5fzSy17OKTppYM2u/..pQ/9IL/RDEjbgwD0B7lK5Ip5OnVu",
+  "role": "admin",
+  "createdBy": {
+    "$oid": "67ea9d8c0f8eb5b3bfd0e800"
+  },
+  "createdAt": {
+    "$date": "2025-04-09T13:03:03.997Z"
+  },
+  "lastActive": {
+    "$date": "2025-04-09T13:03:18.390Z"
+  },
+  "__v": 0
+}]

@@ -6,6 +6,7 @@ import AdminCreateUser from './AdminCreateUser';
 import EditUserModal from './EditUserModal';
 import DeleteConfirmModal from './DeleteConfirmModal';
 import AdminReportPanel from './AdminReportPanel';
+import Navbar from './Navbar';
 
 const AdminDashboard = () => {
   const { user, logout } = useContext(AuthContext);
@@ -88,26 +89,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <nav className="bg-white shadow-lg">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex justify-between">
-            <div className="flex space-x-7">
-              <div className="flex items-center py-4">
-                <span className="font-semibold text-gray-700 text-lg">Админ хяналтын самбар</span>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <span className="py-4 px-2">Админ: {user?.username}</span>
-              <button
-                onClick={logout}
-                className="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-600 transition duration-300"
-              >
-                Гарах
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+     <Navbar />
       
       <div className="container mx-auto px-4 py-8">
         {/* Tab navigation */}
