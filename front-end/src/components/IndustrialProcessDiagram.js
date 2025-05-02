@@ -12,7 +12,9 @@ const IndustrialProcessDiagram = () => {
     { id: 't292', value: 292, position: { top: 67, left: 322 }, label: 'T' },
     { id: 't275', value: 275, position: { top: 87, left: 322 }, label: 'T' },
     { id: 't54', value: 54, position: { top: 400, left: 270 }, label: 'T' },
-    { id: 't275', value: 56, position: { top: 485, left: 425 }, label: 'T' },
+    { id: 't56', value: 56, position: { top: 485, left: 425 }, label: 'T' },
+    { id: 't56', value: 56, position: { top: 485, left: 425 }, label: 'T' },
+    
   ];
 
   // Даралтын өгөгдлийн анхны утга
@@ -134,7 +136,8 @@ const IndustrialProcessDiagram = () => {
     position: { top: 470, left: 950 }
   };
 
-  const CPanelData = {
+  const temperatureVoltageData = {
+    id: 'tempVoltPanel',
     rows: [
       {
         cells: [
@@ -148,7 +151,35 @@ const IndustrialProcessDiagram = () => {
           { label: 'V', value: 399, labelColor: '#8ad' }
         ]
       }
-    ]
+    ],
+    position: { top: 375, left: 975 } // Adjust position as needed
+  };
+
+  const processMonitorData = {
+    id: 'processPanel',
+    rows: [
+      {
+        cells: [
+          { label: 'F', value: 64, labelColor: '#d00' }
+        ]
+      },
+      {
+        cells: [
+          { label: 'P', value: 56, labelColor: '#d00' }
+        ]
+      },
+      {
+        cells: [
+          { label: 'T', value: 148, labelColor: '#d00' }
+        ]
+      },
+      {
+        cells: [
+          { label: 'F', value: 14, labelColor: '#d00' }
+        ]
+      }
+    ],
+    position: { top: 300, left: 1020 } // Adjust position as needed
   };
 
   // Температурын өгөгдлүүдийг state-д хадгалах
@@ -178,8 +209,9 @@ const IndustrialProcessDiagram = () => {
   // Засварлаж байгаа утгыг хадгалах
   const [editValues, setEditValues] = useState({});
 
-  const [CpanelData, CsetPanelData] = useState(CPanelData);
+  const [monitoringPanelData, setMonitoringPanelData] = useState(temperatureVoltageData);
 
+  const [processPanelData, setProcessPanelData] = useState(processMonitorData);
   // Параметр сонголт өөрчлөх
   const handleParamSelection = (param) => {
     setSelectedParams(prev => {
@@ -646,13 +678,16 @@ const IndustrialProcessDiagram = () => {
     backgroundColor: 'black',
     color: 'yellow',
     border: '1px solid yellow',
-    width: '55px',
+    width: '50px',
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: '10px',
     margin: '1px'
   };
 
+  
+
+  
   // Өгөгдлийн элемент үүсгэх функц
   const renderDataItem = (item) => (
     <div 
@@ -816,6 +851,72 @@ const IndustrialProcessDiagram = () => {
     </div>
   );
 
+  const renderMonitoringPanel = (panel) => (
+    <div
+      key={panel.id}
+      style={{
+        ...digitalPanelContainerStyle,
+        top: `${panel.position.top}px`,
+        left: `${panel.position.left}px`
+      }}
+    >
+      {panel.rows.map((row, rowIndex) => (
+        <div key={rowIndex} style={digitalPanelRowStyle}>
+          {row.cells.map((cell, cellIndex) => (
+            <div key={cellIndex} style={digitalPanelCellContainerStyle}>
+              <div style={digitalPanelLabelStyle(cell.labelColor)}>{cell.label}</div>
+              {editMode ? (
+                <input
+                  type="number"
+                  value={editValues[`${panel.id}_row${rowIndex}_cell${cellIndex}`] || ""}
+                  onChange={(e) => handleValueChange(`${panel.id}_row${rowIndex}_cell${cellIndex}`, e.target.value)}
+                  style={digitalPanelInputStyle}
+                />
+              ) : (
+                <div style={digitalPanelValueStyle}>
+                  {cell.value}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+const renderProcessPanel = (panel) => (
+  <div
+  key={panel.id}
+  style={{
+    ...digitalPanelContainerStyle,
+    top: `${panel.position.top}px`,
+    left: `${panel.position.left}px`
+  }}
+>
+  {panel.rows.map((row, rowIndex) => (
+    <div key={rowIndex} style={digitalPanelRowStyle}>
+      {row.cells.map((cell, cellIndex) => (
+        <div key={cellIndex} style={digitalPanelCellContainerStyle}>
+          <div style={digitalPanelLabelStyle(cell.labelColor)}>{cell.label}</div>
+          {editMode ? (
+            <input
+              type="number"
+              value={editValues[`${panel.id}_row${rowIndex}_cell${cellIndex}`] || ""}
+              onChange={(e) => handleValueChange(`${panel.id}_row${rowIndex}_cell${cellIndex}`, e.target.value)}
+              style={digitalPanelInputStyle}
+            />
+          ) : (
+            <div style={digitalPanelValueStyle}>
+              {cell.value}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  ))}
+</div>
+  );
+  
+
   return (
     <div style={{ 
       position: 'relative', 
@@ -854,6 +955,9 @@ const IndustrialProcessDiagram = () => {
       {/* Шинээр нэмсэн хяналтын панелийг харуулах */}
       {renderControlPanel(controlPanelData)}
       
+      {renderMonitoringPanel(monitoringPanelData)}
+
+      {renderProcessPanel(processPanelData)}
       {/* Засварлах товчлуур */}
       <div style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 10 }}>
         <button 
